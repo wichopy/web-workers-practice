@@ -1,6 +1,8 @@
 importScripts('imageManips.js');
 
 this.onmessage = function(e) {
+  console.log('inside worker');
+  console.log(e);
   var imageData = e.data.imageData;
   var type = e.data.type;
 
