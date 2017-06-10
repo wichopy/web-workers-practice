@@ -35,12 +35,9 @@
   }
 
   function manipulateImage(type) {
-    console.log('manip image');
     var a, b, g, i, imageData, j, length, pixel, r, ref;
     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    console.log(imageData);
     toggleButtonsAbledness();
-
     manipWorker(type, imageData);
     // Hint! This is where you should post messages to the web worker and
     // receive messages from the web worker.
@@ -49,7 +46,6 @@
   function manipWorker(wtype, wimageData) {
     var worker = new Worker('./scripts/worker.js');
     worker.onmessage = function (e) {
-      console.log('Worker said: ', e);
       toggleButtonsAbledness();
       return ctx.putImageData(e.data, 0, 0);
     };
